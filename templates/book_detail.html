@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Online Bookstore</title>
+    <!-- Add Bootstrap CSS -->
+</head>
+<body>
+    <h1>{{ book.title }}</h1>
+    <p>{{ book.author }}</p>
+    <p>{{ book.description }}</p>
+    <h2>Reviews</h2>
+    <ul>
+        {% for review in book.reviews %}
+            <li>{{ review.username }} - Rating: {{ review.rating }} - {{ review.comment }}</li>
+        {% endfor %}
+    </ul>
+    <h3>Add Review</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username.label }} {{ form.username() }}<br>
+        {{ form.rating.label }} {{ form.rating() }}<br>
+        {{ form.comment.label }} {{ form.comment() }}<br>
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
